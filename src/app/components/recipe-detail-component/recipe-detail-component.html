@@ -1,0 +1,24 @@
+<!-- recipe-detail.component.html -->
+<div class="detail-container" >
+    @if (recipe) {
+    <mat-card>
+    <img
+    mat-card-image
+    [src]="recipe.imageKey || 'assets/no-image.png'"
+    />
+    <mat-card-content>
+            <h2>{{ recipe.title }}</h2>
+            <p>{{ recipe.description }}</p>
+        </mat-card-content>
+    </mat-card>
+    }
+
+    <mat-card class="ingredients-card">
+        <mat-card-title>Ingredients</mat-card-title>
+        <mat-list>
+        <mat-list-item *ngFor="let ing of ingredients">
+            {{ ing.ingredient }} - {{ ing.quantity }}
+        </mat-list-item>
+        </mat-list>
+    </mat-card>
+</div>
