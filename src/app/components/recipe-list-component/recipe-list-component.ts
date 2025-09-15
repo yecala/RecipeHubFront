@@ -5,11 +5,13 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import {MatIconModule} from '@angular/material/icon';
+
 
 @Component({
   selector: 'app-recipe-list-component',
   standalone: true,
-  imports: [CommonModule, MatGridListModule, MatCardModule],
+  imports: [CommonModule, MatGridListModule, MatCardModule, MatIconModule],
   templateUrl: './recipe-list-component.html',
   styleUrls: ['./recipe-list-component.scss'] // 👈 CORREGIDO (plural)
 })
@@ -38,4 +40,12 @@ export class RecipeListComponent implements OnInit {
   getImageUrl(imageKey: string): string {
     return `http://localhost:8080/api/files/${imageKey}`;
   }
+
+  onImageError(event: Event) {
+    const element = event.target as HTMLImageElement;
+    element.src = ''; // Vacía la imagen
+    element.style.backgroundColor = '#e0e0e0'; // Gris claro
+  }
+
 }
+

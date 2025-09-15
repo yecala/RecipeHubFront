@@ -1,22 +1,15 @@
-
-<div class="container">
-  @if (recipes.length > 0) {
-    <mat-grid-list cols="3" gutterSize="16px" rowHeight="1:1">
-      @for (recipe of recipes; track recipe.id) {
-        <mat-grid-tile>
-          <mat-card class="recipe-card" (click)="goToDetail(recipe.id)">
-            <img
-              mat-card-image
-              [src]="recipe.imageKey || 'assets/no-image.png'"
-            />
-            <mat-card-content>
-              <h3>{{ recipe.title }}</h3>
-            </mat-card-content>
-          </mat-card>
-        </mat-grid-tile>
-      }
-    </mat-grid-list>
-  } @else {
-    <p>No recipes available</p>
-  }
+@if (recipes.length > 0) {
+<div class="component-card-list">
+  @for (recipe of recipes; track recipe.id) {
+  <a class="component-card-list-item" (click)="goToDetail(recipe.id)">
+    <div class="component-card" matRipple>
+      <img class="component-card-image" [src]="recipe.imageKey" [alt]="recipe.title" />
+      <div class="component-card-title">{{ recipe.title }}</div>
+      <div class="component-card-summary">{{ recipe.description}}</div>
+    </div>
+  </a>
+}
 </div>
+}@else {
+    <p>No recipes available</p>
+}
