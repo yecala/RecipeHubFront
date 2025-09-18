@@ -1,0 +1,24 @@
+<mat-horizontal-stepper [linear]="true" #stepper>
+  <mat-step [stepControl]="recipeForm.get('basic')!">
+    <app-recipe-basic-step [parentForm]="recipeForm"></app-recipe-basic-step>
+    <div class="mt-4 flex justify-end">
+      <button mat-button matStepperNext>Siguiente</button>
+    </div>
+  </mat-step>
+
+  <mat-step [stepControl]="ingredients!">
+    <app-recipe-ingredients-step [parentForm]="recipeForm"></app-recipe-ingredients-step>
+    <div class="mt-4 flex justify-between">
+      <button mat-button matStepperPrevious>Anterior</button>
+      <button mat-button matStepperNext>Siguiente</button>
+    </div>
+  </mat-step>
+
+  <mat-step [stepControl]="preparation!">
+    <app-recipe-preparation-step [parentForm]="recipeForm"></app-recipe-preparation-step>
+    <div class="mt-4 flex justify-between">
+      <button mat-button matStepperPrevious>Anterior</button>
+      <button mat-raised-button color="primary" (click)="onSubmit()">Guardar Receta</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

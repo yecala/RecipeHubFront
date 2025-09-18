@@ -1,0 +1,26 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.example-chip-list {
+  width: 100%;
+}
+
+.preparacion-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.paso-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}

@@ -1,0 +1,22 @@
+<!-- recipe-ingredients-step.component.html -->
+@for (ing of ingredients.controls; track $index) {
+  <div [formGroupName]="$index" class="flex gap-2 mb-2">
+    <mat-form-field appearance="outline" class="flex-1">
+      <mat-label>Ingrediente</mat-label>
+      <input matInput formControlName="ingredientId" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-28">
+      <mat-label>Cantidad</mat-label>
+      <input matInput formControlName="quantity" />
+    </mat-form-field>
+
+    <button mat-icon-button color="warn" type="button" (click)="removeIngredient($index)">
+      <mat-icon>remove_circle</mat-icon>
+    </button>
+  </div>
+}
+
+<button mat-stroked-button color="primary" type="button" (click)="addIngredient()">
+  <mat-icon>add</mat-icon> Agregar ingrediente
+</button>

@@ -1,0 +1,36 @@
+<mat-card class="p-4">
+  <h2 class="mb-4">Registrar Receta</h2>
+
+  <form [formGroup]="recetaForm" (ngSubmit)="guardar()">
+    <!-- Lista dinámica de ingredientes -->
+    <div formArrayName="ingredientes">
+      @for (ing of ingredientes.controls; track $index) {
+        <div [formGroupName]="$index" class="flex items-center gap-2 mb-3">
+            <mat-form-field appearance="outline" class="flex-1">
+            <mat-label>Ingrediente</mat-label>
+            <input matInput formControlName="nombre" />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-32">
+            <mat-label>Cantidad</mat-label>
+            <input matInput formControlName="cantidad" />
+            </mat-form-field>
+
+            <button mat-icon-button color="warn" type="button" (click)="eliminarIngrediente($index)">
+            <mat-icon>remove_circle</mat-icon>
+            </button>
+        </div>
+        }
+    </div>
+
+    <!-- Botón agregar -->
+    <button mat-mini-fab color="primary" type="button" (click)="agregarIngrediente()">
+      <mat-icon>add</mat-icon>
+    </button>
+
+    <!-- Botón guardar -->
+    <div class="mt-4">
+      <button mat-raised-button color="accent" type="submit">Guardar Receta</button>
+    </div>
+  </form>
+</mat-card>

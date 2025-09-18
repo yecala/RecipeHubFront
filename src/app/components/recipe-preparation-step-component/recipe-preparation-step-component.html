@@ -1,0 +1,17 @@
+<!-- recipe-preparation-step.component.html -->
+@for (step of steps.controls; track $index) {
+  <div [formGroupName]="$index" class="flex gap-2 mb-2">
+    <mat-form-field appearance="outline" class="flex-1">
+      <mat-label>Paso</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+
+    <button mat-icon-button color="warn" type="button" (click)="removeStep($index)">
+      <mat-icon>remove_circle</mat-icon>
+    </button>
+  </div>
+}
+
+<button mat-stroked-button color="primary" type="button" (click)="addStep()">
+  <mat-icon>add</mat-icon> Agregar paso
+</button>
