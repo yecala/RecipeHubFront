@@ -1,0 +1,28 @@
+.ingredients-step-container {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  .form-field-ingredient {
+    width: 40%;
+    margin-right: 15px;
+  }
+  .form-field-quantity {
+    width: 40%;
+  }
+ 
+}
+
+/* Asegurar que el alto y estilo sea igual en todos los inputs */
+::ng-deep .mat-mdc-form-field-infix {
+  min-height: 60px;
+}
+::ng-deep .mat-mdc-text-field-wrapper {
+  font-size: 1.1rem;
+}

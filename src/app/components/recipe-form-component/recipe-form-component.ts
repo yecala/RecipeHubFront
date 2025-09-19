@@ -30,8 +30,9 @@ export class RecipeFormComponent {
       basic: this.fb.group({
         title: ['', Validators.required],
         description: [''],
+        image: [null] // <-- nuevo control para la imagen
       }),
-      ingredients: this.fb.array([]),
+      ingredients: this.fb.array([]),  // <--- inicializamos vacío
       preparation: this.fb.array([]),
     });
   }

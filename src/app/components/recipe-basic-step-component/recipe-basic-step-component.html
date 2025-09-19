@@ -1,11 +1,29 @@
-<div [formGroup]="basicGroup">
-  <mat-form-field appearance="outline" class="w-full">
+<div [formGroup]="basicGroup" class="basic-step-container">
+  <mat-form-field appearance="outline" class="form-field">
     <mat-label>Título</mat-label>
     <input matInput formControlName="title" />
   </mat-form-field>
 
-  <mat-form-field appearance="outline" class="w-full">
+  <mat-form-field appearance="outline" class="form-field">
     <mat-label>Descripción</mat-label>
     <textarea matInput formControlName="description"></textarea>
   </mat-form-field>
+
+  <!-- Campo para imagen -->
+  <div class="upload-container">
+    <label for="imageUpload" class="upload-label">
+      <mat-icon>photo_camera</mat-icon>
+      <span>Seleccionar imagen</span>
+    </label>
+    <input
+      id="imageUpload"
+      type="file"
+      accept="image/*"
+      (change)="onFileSelected($event)"
+      hidden
+    />
+
+    <!-- Preview -->
+    <img *ngIf="previewUrl" [src]="previewUrl" alt="Vista previa" class="preview" />
+    
 </div>

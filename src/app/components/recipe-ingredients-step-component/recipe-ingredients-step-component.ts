@@ -19,17 +19,31 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule,
   ],
   templateUrl: './recipe-ingredients-step-component.html',
+  styleUrls: ['./recipe-ingredients-step-component.scss'] 
 })
 export class RecipeIngredientsStepComponent {
   @Input() parentForm!: FormGroup;
+
+
+  constructor(private fb: FormBuilder) {}
+  
+  ngOnInit(): void {
+    // nos aseguramos de que exista el array
+    if (!this.parentForm.get('ingredients')) {
+      this.parentForm.addControl('ingredients', this.fb.array([]));
+    }
+    this.addIngredient();
+  }
+    // 👇 Esto fuerza el tipo para que Angular no se queje en el template
+  get basicGroup(): FormGroup {
+    return this.parentForm.get('basic') as FormGroup;
+  }
 
   get ingredients(): FormArray {
     return this.parentForm.get('ingredients') as FormArray;
   }
 
-  constructor(private fb: FormBuilder) {}
-
-  addIngredient() {
+  addIngredient(): void {
     this.ingredients.push(
       this.fb.group({
         ingredientId: [''],
@@ -38,7 +52,12 @@ export class RecipeIngredientsStepComponent {
     );
   }
 
-  removeIngredient(index: number) {
+  removeIngredient(index: number): void {
     this.ingredients.removeAt(index);
+  }
+
+  // 👇 trackBy para evitar recrear los controles en el DOM
+  trackByIndex(index: number): number {
+    return index;
   }
 }
